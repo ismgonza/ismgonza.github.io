@@ -1,0 +1,30 @@
+.pagination-container {
+    margin-top: 3rem;
+}
+
+.pagination .page-link {
+    color: #2a3f7d;
+    border-color: #dee2e6;
+    margin: 0 2px;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #1e2a4a;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #2a3f7d;
+    border-color: #2a3f7d;
+    color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}

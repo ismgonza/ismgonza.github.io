@@ -1,0 +1,30 @@
+title: GonRod
+title_description: Tech Guides & Solutions | Making Tech Less Complicated
+meta_description: >-
+  Your trusted resource for in-depth tech guides, troubleshooting solutions, and expert insights. From coding challenges to system optimization, we deliver practical knowledge to help you master modern technology.
+rss_description: >-
+  Expert-driven tech blog featuring comprehensive guides, troubleshooting walkthroughs, and industry insights. We break down complex technical challenges into clear, actionable solutions for developers, IT professionals, and tech enthusiasts.
+
+url: "https://blog.gonrod.com"
+baseurl: "" # the subpath of your site, e.g. /blog
+
+defaults:
+  - scope:
+      path: "pages"
+      type: "pages"
+    values:
+      layout: page
+
+# navigation:
+#   dropdowns:
+#     - name: Services
+#       path: pages/services
+
+# Pagination settings
+paginate: 9
+paginate_path: "/page/:num/"
+
+plugins:
+  - jekyll-paginate
+
+markdown: kramdown

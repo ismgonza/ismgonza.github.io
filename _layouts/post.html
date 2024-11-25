@@ -1,0 +1,160 @@
+---
+layout: wrapper
+---
+<!-- Banner Image and Title Section -->
+<div class="position-relative mb-4">
+    <!-- Banner Image -->
+    <div class="banner-image" style="height: 400px; overflow: hidden;">
+        <img src="your-banner-image.jpg" class="w-100 h-100 object-fit-cover" alt="Blog Banner">
+    </div>
+    
+    <!-- Overlapping Title Card -->
+    <div class="container">
+        <div class="card position-relative" style="margin-top: -100px;">
+            <div class="card-body p-4">
+                <h1 class="display-4 mb-4">{{ page.title }}</h1>
+                
+                <!-- Metadata -->
+                <div class="text-muted mb-4">
+                    <span>{{ page.date | date_to_string: "ordinal", "US" }}</span>
+                    <span class="mx-2">|</span>
+                    <span>{{ page.duration }} read</span>
+                    <span class="mx-2">|</span>
+                    <span>By: {{ page.author }}</span>
+                </div>
+                <!-- Tags -->
+                <div>
+                    {% for tag in page.tags %}
+                    <a href="#" class="btn btn-sm btn-light me-2">#{{ tag }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- Article Content -->
+        <div class="col-lg-8">
+            <!-- Article Body -->
+            <div class="article-content mb-5">
+                <p>{{ content }}</p>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="mb-5">
+                <h5 class="mb-3">Share this post</h5>
+                <button class="btn btn-info me-2">
+                    <i class="bi bi-twitter"></i> Twitter
+                </button>
+                <button class="btn btn-dark me-2">
+                    <i class="bi bi-github"></i> GitHub
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="bi bi-link-45deg"></i> Copy Link
+                </button>
+            </div>
+
+            <!-- Related Posts -->
+            <div>
+                <h3 class="mb-4">Related Posts</h3>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <!-- Related Post Card -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="related-post-1.jpg" class="card-img-top" alt="Related Post">
+                            <div class="card-body">
+                                <h5 class="card-title">Related Post Title</h5>
+                                <p class="card-text text-muted">Brief description of the related post...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">5 min read</small>
+                                    <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More Related Posts... -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card sticky-top" style="top: 2rem;">
+                <div class="card-body">
+                    <h5 class="card-title">In This Article</h5>
+                    <nav class="nav flex-column" id="table-of-contents">
+                        <!-- JS will populate this -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all headings from h2 to h4 from the article content
+        const article = document.querySelector('.article-content');
+        const headings = article.querySelectorAll('h2, h3, h4');
+        const toc = document.getElementById('table-of-contents');
+        
+        const offset = 100; // Adjust based on your header height
+    
+        headings.forEach((heading, index) => {
+            // Create an ID for the heading if it doesn't have one
+            if (!heading.id) {
+                heading.id = `section-${index + 1}`;
+            }
+    
+            // Create the ToC item
+            const link = document.createElement('a');
+            link.href = `#${heading.id}`;
+            link.className = 'nav-link';
+            link.textContent = heading.textContent;
+    
+            // Add level-based indentation
+            const headingLevel = parseInt(heading.tagName.charAt(1));
+            link.classList.add(`toc-level-${headingLevel}`);
+            
+            // Optional: Add visual hierarchy indicator for sub-sections
+            if (headingLevel > 2) {
+                const indent = '─ ';
+                link.textContent = indent + link.textContent;
+            }
+    
+            // Add click event for smooth scrolling
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPosition = heading.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+    
+            // Add active state tracking
+            const listItem = document.createElement('div');
+            listItem.appendChild(link);
+            toc.appendChild(listItem);
+        });
+    
+        // Highlight current section in ToC while scrolling
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+    
+            headings.forEach((heading, index) => {
+                const link = toc.children[index].querySelector('a');
+                const section = heading.getBoundingClientRect();
+                
+                if (section.top <= offset + 50 && section.bottom >= offset) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    });
+    </script>

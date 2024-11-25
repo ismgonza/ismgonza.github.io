@@ -1,0 +1,35 @@
+<section class="blog-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Latest Articles</h2>
+        <div class="row g-4">
+            {% for post in site.posts %}
+            <div class="col-md-6 col-lg-4">
+                <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
+                    <div class="card h-100 shadow-sm hover-lift">
+                        {% if post.banner_image %}
+                        <img src="{{ post.banner_image }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                        {% else %}
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
+                        </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">{{ post.date | date: "%B %d, %Y" }}</small>
+                                <small class="text-muted">{{ post.duration }}</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            {% for tag in post.tags %}
+                            <span class="badge bg-light text-dark me-1">#{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,123 @@
+/* For smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Banner image styling */
+.banner-image {
+    position: relative;
+    background-color: #000;
+}
+
+.banner-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,1));
+}
+
+/* Article content styling */
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #212529; /* Add this to ensure text is visible */
+}
+
+/* Tag buttons hover effect */
+.btn-light:hover {
+    background-color: #e9ecef;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        margin-top: -50px;
+    }
+}
+
+/* START -- TABLE OF CONTENT - ToC */
+/* Make the ToC card stick to top while scrolling */
+.sticky-top {
+    z-index: 100;
+}
+
+/* Base styles for ToC links - Make more specific */
+#table-of-contents .nav-link {
+    color: #666;
+    transition: all 0.3s ease;
+    border-left: 2px solid transparent;
+    padding: 0.25rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Heading level-based indentation and styling */
+#table-of-contents .nav-link.toc-level-2 {
+    padding-left: 1rem;
+    font-weight: 500;
+}
+
+#table-of-contents .nav-link.toc-level-3 {
+    padding-left: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+#table-of-contents .nav-link.toc-level-4 {
+    padding-left: 3rem;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Active state for current section */
+#table-of-contents .nav-link.active {
+    color: #0d6efd;
+    border-left: 2px solid #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Different active states for different levels */
+#table-of-contents .nav-link.toc-level-3.active,
+#table-of-contents .nav-link.toc-level-4.active {
+    border-left-width: 1px;
+}
+
+/* Hover state */
+#table-of-contents .nav-link:hover {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+    text-decoration: none;
+}
+
+/* Post content heading styles */
+.article-content h2, 
+.article-content h3, 
+.article-content h4 {
+    scroll-margin-top: 100px; /* Adjust based on your header height */
+    color: #212529;
+}
+
+/* Hide ToC on mobile */
+@media (max-width: 991.98px) {
+    .sticky-top {
+        display: none !important;
+    }
+}
+/* END -- TABLE OF CONTENT - ToC */
+
+/* ADD -- Post Title and Meta Styles */
+.article-content h1 {
+    color: #212529;
+}
+
+.post-meta {
+    color: #6c757d;
+}
+
+.post-tags .tag {
+    color: #212529;
+    background-color: #f8f9fa;
+}
