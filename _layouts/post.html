@@ -66,12 +66,12 @@ layout: wrapper
             </div>
 
             <!-- Related Posts -->
-            {% assign related_posts = site.posts | where_exp:"post", "post.url != page.url" | where_exp:"post", "post.tags contains page.tags.first or post.categories contains page.categories.first" | limit:2 %}
+            {% assign related_posts = site.posts | where_exp: "item", "item.url != page.url" %}
             {% if related_posts.size > 0 %}
             <div>
                 <h3 class="mb-4">Related Posts</h3>
                 <div class="row row-cols-1 row-cols-md-2 g-4">
-                    {% for post in related_posts %}
+                    {% for post in related_posts limit:2 %}
                     <div class="col">
                         <div class="card h-100">
                             {% if post.banner_image %}
