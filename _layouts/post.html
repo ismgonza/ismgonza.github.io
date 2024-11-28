@@ -40,7 +40,7 @@ layout: wrapper
         <div class="col-lg-8">
             <!-- Article Body -->
             <div class="article-content mb-5">
-                <p>{{ content }}</p>
+                {{ content }}
                 
                 <!-- Banner Image Credits -->
                 {% if page.banner_image_credits %}
@@ -54,40 +54,49 @@ layout: wrapper
             <!-- Share Buttons -->
             <div class="mb-5">
                 <h5 class="mb-3">Share this post</h5>
-                <button class="btn btn-info me-2">
-                    <i class="bi bi-twitter"></i> Twitter
+                <button class="btn btn-dark me-2" id="shareToX">
+                    <i class="bi bi-twitter-x"></i> X
                 </button>
-                <button class="btn btn-dark me-2">
-                    <i class="bi bi-github"></i> GitHub
+                <button class="btn btn-primary me-2" id="shareToLinkedIn">
+                    <i class="bi bi-linkedin"></i> LinkedIn
                 </button>
-                <button class="btn btn-secondary">
+                <button class="btn btn-secondary" id="copyLink">
                     <i class="bi bi-link-45deg"></i> Copy Link
                 </button>
             </div>
 
             <!-- Related Posts -->
-            <!-- <div>
+            {% assign related_posts = site.posts | where_exp:"post", "post.url != page.url" | 
+                where_exp:"post", "post.tags contains page.tags.first or post.categories contains page.categories.first" | 
+                limit:2 %}
+            {% if related_posts.size > 0 %}
+            <div>
                 <h3 class="mb-4">Related Posts</h3>
                 <div class="row row-cols-1 row-cols-md-2 g-4">
+                    {% for post in related_posts %}
                     <div class="col">
                         <div class="card h-100">
-                            <img src="related-post-1.jpg" class="card-img-top" alt="Related Post">
+                            {% if post.banner_image %}
+                            <img src="{{ post.banner_image }}" class="card-img-top" alt="{{ post.title }}">
+                            {% endif %}
                             <div class="card-body">
-                                <h5 class="card-title">Related Post Title</h5>
-                                <p class="card-text text-muted">Brief description of the related post...</p>
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">5 min read</small>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    <small class="text-muted">{{ post.duration }}</small>
+                                    <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-            </div> -->
+            </div>
+            {% endif %}
         </div>
 
-        <!-- Sidebar -->
-        <div class="col-lg-4">
+        <!-- Sidebar - Only shown if there are headings -->
+        <div class="col-lg-4" id="sidebar-container">
             <div class="card sticky-top" style="top: 2rem;">
                 <div class="card-body">
                     <h5 class="card-title">In This Article</h5>
@@ -101,59 +110,88 @@ layout: wrapper
 </div>
 
 <script>
-    // Your existing table of contents JavaScript remains the same
     document.addEventListener('DOMContentLoaded', function() {
+        // Table of Contents functionality
         const article = document.querySelector('.article-content');
-        const headings = article.querySelectorAll('h2, h3, h4');
+        const headings = article.querySelectorAll('h1, h2, h3, h4');
         const toc = document.getElementById('table-of-contents');
+        const sidebarContainer = document.getElementById('sidebar-container');
         
-        const offset = 100;
-    
-        headings.forEach((heading, index) => {
-            if (!heading.id) {
-                heading.id = `section-${index + 1}`;
-            }
-    
-            const link = document.createElement('a');
-            link.href = `#${heading.id}`;
-            link.className = 'nav-link';
-            link.textContent = heading.textContent;
-    
-            const headingLevel = parseInt(heading.tagName.charAt(1));
-            link.classList.add(`toc-level-${headingLevel}`);
-            
-            if (headingLevel > 2) {
-                const indent = '─ ';
-                link.textContent = indent + link.textContent;
-            }
-    
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetPosition = heading.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+        // Only show sidebar if there are headings
+        if (headings.length === 0) {
+            sidebarContainer.style.display = 'none';
+        } else {
+            headings.forEach((heading, index) => {
+                if (!heading.id) {
+                    heading.id = `section-${index + 1}`;
+                }
+        
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.className = 'nav-link';
+                link.textContent = heading.textContent;
+        
+                const headingLevel = parseInt(heading.tagName.charAt(1));
+                link.classList.add(`toc-level-${headingLevel}`);
+        
+                const listItem = document.createElement('div');
+                listItem.appendChild(link);
+                toc.appendChild(listItem);
+            });
+        
+            // Highlight current section while scrolling
+            const offset = 100;
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+        
+                headings.forEach((heading, index) => {
+                    const link = toc.children[index]?.querySelector('a');
+                    if (!link) return;
+                    
+                    const section = heading.getBoundingClientRect();
+                    
+                    if (section.top <= offset + 50 && section.bottom >= offset) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
                 });
             });
-    
-            const listItem = document.createElement('div');
-            listItem.appendChild(link);
-            toc.appendChild(listItem);
+        }
+
+        // Share buttons functionality
+        const shareToX = document.getElementById('shareToX');
+        const shareToLinkedIn = document.getElementById('shareToLinkedIn');
+        const copyLink = document.getElementById('copyLink');
+
+        // Get current page URL and title
+        const pageUrl = window.location.href;
+        const pageTitle = document.querySelector('h1').textContent;
+
+        // Share to X (Twitter)
+        shareToX.addEventListener('click', () => {
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(pageTitle)}&url=${encodeURIComponent(pageUrl)}`;
+            window.open(twitterUrl, '_blank');
         });
-    
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-    
-            headings.forEach((heading, index) => {
-                const link = toc.children[index].querySelector('a');
-                const section = heading.getBoundingClientRect();
-                
-                if (section.top <= offset + 50 && section.bottom >= offset) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
+
+        // Share to LinkedIn
+        shareToLinkedIn.addEventListener('click', () => {
+            const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
+            window.open(linkedInUrl, '_blank', 'width=600,height=600');
+        });
+
+        // Copy Link
+        copyLink.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(pageUrl);
+                const originalText = copyLink.innerHTML;
+                copyLink.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+                setTimeout(() => {
+                    copyLink.innerHTML = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
         });
     });
 </script>
