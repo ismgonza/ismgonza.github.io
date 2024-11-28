@@ -20,7 +20,7 @@ I also strongly believe that everyone in this industry must build the habit of _
 
 So yes, I'll be posting some tshooting guides that could help other folks fix some _exotic_ issues, share my perspective of interesting topics and learning lessons on new stuffs I am exploring.
 
-Feel free to also [reach out](/contact/) in case you have anything interesting to share, any ideas for new posts, or comments on any post where there is room for improvements.
+Feel free to also [reach out](/contact) in case you have anything interesting to share, any ideas for new posts, or comments on any post where there is room for improvements.
 
 Since this is a introductory post and I just want to get this rolling, I'll leave it up to here.
 
