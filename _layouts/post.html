@@ -66,9 +66,7 @@ layout: wrapper
             </div>
 
             <!-- Related Posts -->
-            {% assign related_posts = site.posts | where_exp:"post", "post.url != page.url" | 
-                where_exp:"post", "post.tags contains page.tags.first or post.categories contains page.categories.first" | 
-                limit:2 %}
+            {% assign related_posts = site.posts | where_exp:"post", "post.url != page.url" | where_exp:"post", "post.tags contains page.tags.first or post.categories contains page.categories.first" | limit:2 %}
             {% if related_posts.size > 0 %}
             <div>
                 <h3 class="mb-4">Related Posts</h3>
