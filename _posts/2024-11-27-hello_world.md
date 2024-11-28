@@ -20,4 +20,4 @@ I also strongly believe that everyone in this industry must build the habit of _
 
 Since this is a introductory post and I just want to get this rolling, I'll leave it up to here.
 
-From me to myself...
+See you soon!
