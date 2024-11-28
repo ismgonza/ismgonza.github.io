@@ -5,7 +5,7 @@ layout: wrapper
 <div class="position-relative mb-4">
     <!-- Banner Image -->
     <div class="banner-image" style="height: 400px; overflow: hidden;">
-        <img src="your-banner-image.jpg" class="w-100 h-100 object-fit-cover" alt="Blog Banner">
+        <img src="{{ page.banner_image }}" class="w-100 h-100 object-fit-cover" alt="Blog Banner">
     </div>
     
     <!-- Overlapping Title Card -->
@@ -41,6 +41,14 @@ layout: wrapper
             <!-- Article Body -->
             <div class="article-content mb-5">
                 <p>{{ content }}</p>
+                
+                <!-- Banner Image Credits -->
+                {% if page.banner_image_credits %}
+                <hr class="my-5">
+                <div class="text-muted">
+                    {{ page.banner_image_credits | markdownify }}
+                </div>
+                {% endif %}
             </div>
 
             <!-- Share Buttons -->
@@ -58,10 +66,9 @@ layout: wrapper
             </div>
 
             <!-- Related Posts -->
-            <div>
+            <!-- <div>
                 <h3 class="mb-4">Related Posts</h3>
                 <div class="row row-cols-1 row-cols-md-2 g-4">
-                    <!-- Related Post Card -->
                     <div class="col">
                         <div class="card h-100">
                             <img src="related-post-1.jpg" class="card-img-top" alt="Related Post">
@@ -75,9 +82,8 @@ layout: wrapper
                             </div>
                         </div>
                     </div>
-                    <!-- More Related Posts... -->
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- Sidebar -->
@@ -95,37 +101,32 @@ layout: wrapper
 </div>
 
 <script>
+    // Your existing table of contents JavaScript remains the same
     document.addEventListener('DOMContentLoaded', function() {
-        // Get all headings from h2 to h4 from the article content
         const article = document.querySelector('.article-content');
         const headings = article.querySelectorAll('h2, h3, h4');
         const toc = document.getElementById('table-of-contents');
         
-        const offset = 100; // Adjust based on your header height
+        const offset = 100;
     
         headings.forEach((heading, index) => {
-            // Create an ID for the heading if it doesn't have one
             if (!heading.id) {
                 heading.id = `section-${index + 1}`;
             }
     
-            // Create the ToC item
             const link = document.createElement('a');
             link.href = `#${heading.id}`;
             link.className = 'nav-link';
             link.textContent = heading.textContent;
     
-            // Add level-based indentation
             const headingLevel = parseInt(heading.tagName.charAt(1));
             link.classList.add(`toc-level-${headingLevel}`);
             
-            // Optional: Add visual hierarchy indicator for sub-sections
             if (headingLevel > 2) {
                 const indent = '─ ';
                 link.textContent = indent + link.textContent;
             }
     
-            // Add click event for smooth scrolling
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetPosition = heading.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -135,13 +136,11 @@ layout: wrapper
                 });
             });
     
-            // Add active state tracking
             const listItem = document.createElement('div');
             listItem.appendChild(link);
             toc.appendChild(listItem);
         });
     
-        // Highlight current section in ToC while scrolling
         window.addEventListener('scroll', function() {
             const scrollPosition = window.scrollY;
     
@@ -157,4 +156,4 @@ layout: wrapper
             });
         });
     });
-    </script>
+</script>

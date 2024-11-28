@@ -1,19 +1,43 @@
-<div class="hero-section position-relative">
-    <!-- Animated Background with Geometric Shapes -->
-    <div class="hero-bg">
-        <!-- Animated shapes -->
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
-        <div class="shape shape-6"></div>
-        <!-- New shapes -->
-        <div class="circle-1"></div>
-        <div class="circle-2"></div>
-        <div class="triangle-1"></div>
-        <div class="triangle-2"></div>
-    </div>
+    <div class="hero-section position-relative">
+        <!-- SVG Divider -->
+        <div class="hero-divider">
+            <!-- Copy the entire SVG code here -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#1e2a4a;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2a3f7d;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="gradient2" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#2a3f7d;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#3a5cb0;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M0 0 H1440 V800 H0 Z" fill="url(#gradient1)"/>
+                <path d="M0 800 
+                         C360 600, 240 520, 576 480
+                         S1080 360, 1224 200
+                         S1368 80, 1440 0
+                         L1440 0 L1440 800 L0 800 Z" 
+                      fill="url(#gradient2)"/>
+            </svg>
+        </div>
+
+        <!-- Animated Background with Geometric Shapes -->
+        <div class="hero-bg">
+            <!-- Animated shapes -->
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+            <!-- Additional shapes -->
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+        </div>
 
     <!-- Your existing navigation code goes here -->
     {% include header.html %}
