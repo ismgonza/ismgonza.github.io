@@ -4,7 +4,7 @@ title: hello_world
 date: 2024-11-27 20:00
 author: Isma
 categories: ''
-tags: ''
+tags: 'hello_world'
 duration: 1 minute
 banner_image: '/assets/images/2024-11-27-hello_world.jpg'
 banner_image_credits: '_Photo by [Clay Banks](https://unsplash.com/@claybanks?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-8q6e5hu3Ilc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)_'

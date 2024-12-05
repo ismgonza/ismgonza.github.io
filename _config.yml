@@ -28,3 +28,4 @@ plugins:
   - jekyll-paginate
 
 markdown: kramdown
+# markdown: redcarpet
