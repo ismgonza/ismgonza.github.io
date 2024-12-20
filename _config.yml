@@ -29,3 +29,5 @@ plugins:
 
 markdown: kramdown
 # markdown: redcarpet
+
+timezone: America/Costa_Rica
