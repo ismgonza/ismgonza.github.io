@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Styles -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+        </marker>
+    </defs>
+
+    <!-- Phase 1: Request Headers -->
+    <rect x="300" y="50" width="200" height="60" rx="5" fill="#3498db" opacity="0.9"/>
+    <text x="400" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Phase 1: Request Headers</text>
+    <text x="400" y="100" text-anchor="middle" fill="white" font-family="Arial" font-size="12">(URI, Headers, Access Control)</text>
+
+    <!-- Phase 2: Request Body -->
+    <rect x="300" y="160" width="200" height="60" rx="5" fill="#2ecc71" opacity="0.9"/>
+    <text x="400" y="195" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Phase 2: Request Body</text>
+    <text x="400" y="210" text-anchor="middle" fill="white" font-family="Arial" font-size="12">(Body Processing, MIME Check)</text>
+
+    <!-- Phase 3: Response Headers -->
+    <rect x="300" y="270" width="200" height="60" rx="5" fill="#e74c3c" opacity="0.9"/>
+    <text x="400" y="305" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Phase 3: Response Headers</text>
+    <text x="400" y="320" text-anchor="middle" fill="white" font-family="Arial" font-size="12">(Response Header Processing)</text>
+
+    <!-- Phase 4: Response Body -->
+    <rect x="300" y="380" width="200" height="60" rx="5" fill="#9b59b6" opacity="0.9"/>
+    <text x="400" y="415" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Phase 4: Response Body</text>
+    <text x="400" y="430" text-anchor="middle" fill="white" font-family="Arial" font-size="12">(Response Content Analysis)</text>
+
+    <!-- Phase 5: Logging -->
+    <rect x="300" y="490" width="200" height="60" rx="5" fill="#f1c40f" opacity="0.9"/>
+    <text x="400" y="525" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Phase 5: Logging</text>
+    <text x="400" y="540" text-anchor="middle" fill="white" font-family="Arial" font-size="12">(Post-Transaction Processing)</text>
+
+    <!-- Connecting Arrows -->
+    <path d="M400 110 L400 160" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M400 220 L400 270" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M400 330 L400 380" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M400 440 L400 490" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Request/Response Flow Labels -->
+    <text x="420" y="135" font-family="Arial" font-size="12" fill="#2c3e50">Request Flow</text>
+    <text x="420" y="355" font-family="Arial" font-size="12" fill="#2c3e50">Response Flow</text>
+
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">ModSecurity Processing Phases</text>
+</svg>
