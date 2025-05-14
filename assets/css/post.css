@@ -121,3 +121,17 @@ html {
     color: #212529;
     background-color: #f8f9fa;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
