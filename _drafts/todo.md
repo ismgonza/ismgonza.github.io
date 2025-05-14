@@ -50,3 +50,8 @@
 
 ## General
 * [Explorer](https://explorer.globe.engineer/)
+* Hardening Linux with CIS and OpenScap
+  * https://github.com/ComplianceAsCode/content
+  * https://complianceascode.github.io/content-pages/guides/ssg-al2023-guide-cis_server_l1.html
+  * https://static.open-scap.org/openscap-1.2/oscap_user_manual.html
+  * https://github.com/ansible-lockdown/AMAZON2023-CIS (Only added as reference, never tested)
