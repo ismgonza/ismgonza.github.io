@@ -76,7 +76,7 @@ Quien entra con tu clave no "hackea" nada: usa tu llave. El sistema cree que sos
 - **Redes del negocio robadas** y usadas para estafar a tus propios clientes.
 - **Datos de clientes filtrados:** multas, reclamos y pérdida de confianza.
 
-<p class="pd-small">Más de 2 de cada 3 personas usan la misma contraseña en varias cuentas (Security.org, citado por Morgan Stanley). En 2024 hubo más de 3.000 filtraciones de datos solo en EE. UU. (Identity Theft Resource Center, citado por NIST).</p>
+<p class="pd-small">Más de 2 de cada 3 personas usan la misma contraseña en varias cuentas (Security.org). En 2024 hubo más de 3.000 filtraciones de datos solo en EE. UU. (Identity Theft Resource Center).</p>
 
 ## Checklist
 
@@ -130,7 +130,7 @@ Abrí cada sección y marcá lo que ya cumplís.
 </ul></details>
 <details class="pd-acc"><summary><span class="pd-title">7. ¿Cada cuánto cambiarlas?</span><span class="pd-count"></span></summary>
 <ul class="pd-list">
-<li><label><input type="checkbox"><span>No cambiás claves solo porque pasaron 3 meses. NIST ya no lo recomienda: la gente termina pasando de <code>Verano2025!</code> a <code>Otoño2025!</code>, y eso no protege nada. (KnowBe4 sugiere una vez al año; con un gestor no te cuesta nada.)<span class="pd-ref">NIST · University of Colorado · KnowBe4</span></span></label></li>
+<li><label><input type="checkbox"><span>No cambiás claves solo porque pasaron 3 meses. Cambiarlas por calendario no protege: la gente termina pasando de <code>Verano2025!</code> a <code>Otoño2025!</code>. Si querés una rutina, una vez al año es suficiente, y con un gestor no te cuesta nada.<span class="pd-ref">NIST · University of Colorado · KnowBe4</span></span></label></li>
 <li><label><input type="checkbox"><span>Sí la cambiás <strong>de inmediato</strong> si: aparece en un robo de datos, se la dijiste a alguien, alguien que la conocía dejó el negocio, la usaste en una computadora pública o te llega un aviso de un inicio de sesión que no fuiste vos.<span class="pd-ref">NIST · Morgan Stanley</span></span></label></li>
 <li><label><input type="checkbox"><span>Cambiaste la clave que venía de fábrica en el router del internet, las cámaras, las impresoras y la máquina de cobro.<span class="pd-ref">Morgan Stanley · KnowBe4</span></span></label></li>
 </ul></details>
@@ -163,13 +163,13 @@ Abrí cada sección y marcá lo que ya cumplís.
 <tbody>
 <tr><td>8 caracteres</td><td><code>Maria85!</code></td><td>Débil. Si hackean el sitio donde la usás, la descubren en minutos u horas.</td></tr>
 <tr><td>12 caracteres</td><td><code>Cafetal2025!</code></td><td>Mejor, pero sigue siendo fácil de descubrir si hackean el sitio.</td></tr>
-<tr><td>15 o más</td><td><code>perro-nube-sartén</code></td><td>El mínimo que recomienda NIST.</td></tr>
+<tr><td>15 o más</td><td><code>perro-nube-sartén</code></td><td>Mínimo recomendado.</td></tr>
 <tr><td>20 o más</td><td><code>tortuga-cafetal-mapa-lluvia</code></td><td>Fuerte. Muy difícil de descubrir, incluso si hackean el sitio.</td></tr>
 </tbody>
 </table>
 </div>
 
-<p class="pd-small">Ejemplos ilustrativos, no los usés. Basado en NIST y KnowBe4, <em>What Your Password Policy Should Be</em>.</p>
+<p class="pd-small">Ejemplos ilustrativos, no los usés.</p>
 
 ## Empieza hoy: 5 acciones rápidas
 
