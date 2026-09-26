@@ -5,7 +5,8 @@ layout: wrapper
 
 <section class="blog-section py-5">
     <div class="container">
-        <h2 class="text-center mb-5">Latest Articles</h2>
+        <h2 class="text-center mb-5">Últimos artículos</h2>
+        {% if paginator.posts.size > 0 %}
         <div class="row g-4">
             {% for post in paginator.posts %}
             <div class="col-md-6 col-lg-4">
@@ -22,7 +23,7 @@ layout: wrapper
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">{{ post.date | date: "%B %d, %Y" }}</small>
+                                <small class="text-muted">{% include date-es.html date=post.date %}</small>
                                 <small class="text-muted">{{ post.duration }}</small>
                             </div>
                         </div>
@@ -36,16 +37,19 @@ layout: wrapper
             </div>
             {% endfor %}
         </div>
+        {% else %}
+        <p class="text-center text-muted mb-0">Pronto habrá artículos nuevos.</p>
+        {% endif %}
 
         <!-- Pagination -->
         {% if paginator.total_pages > 1 %}
         <div class="pagination-container mt-5">
-            <nav aria-label="Blog pagination">
+            <nav aria-label="Paginación del blog">
                 <ul class="pagination justify-content-center">
                     <!-- Previous page -->
                     {% if paginator.previous_page %}
                     <li class="page-item">
-                        <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}" aria-label="Previous">
+                        <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}" aria-label="Anterior">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -69,7 +73,7 @@ layout: wrapper
                     <!-- Next page -->
                     {% if paginator.next_page %}
                     <li class="page-item">
-                        <a class="page-link" href="{{ paginator.next_page_path | relative_url }}" aria-label="Next">
+                        <a class="page-link" href="{{ paginator.next_page_path | relative_url }}" aria-label="Siguiente">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

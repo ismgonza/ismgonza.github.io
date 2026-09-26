@@ -3,24 +3,28 @@ layout: wrapper
 ---
 <!-- Banner Image and Title Section -->
 <div class="position-relative mb-4">
+    {% if page.banner_image %}
     <!-- Banner Image -->
     <div class="banner-image" style="height: 500px; overflow: hidden;">
         <img src="{{ page.banner_image }}" class="w-100 h-100 object-fit-cover" alt="Blog Banner">
     </div>
+    {% endif %}
     
     <!-- Overlapping Title Card -->
     <div class="container">
-        <div class="card position-relative" style="margin-top: -100px;">
+        <div class="card position-relative"{% if page.banner_image %} style="margin-top: -100px;"{% endif %}>
             <div class="card-body p-4">
                 <h1 class="display-4 mb-4">{{ page.title }}</h1>
                 
                 <!-- Metadata -->
                 <div class="text-muted mb-4">
-                    <span>{{ page.date | date_to_string: "ordinal", "US" }}</span>
+                    <span>{% include date-es.html date=page.date %}</span>
+                    {% if page.duration %}
                     <span class="mx-2">|</span>
-                    <span>{{ page.duration }} read</span>
+                    <span>{{ page.duration }} de lectura</span>
+                    {% endif %}
                     <span class="mx-2">|</span>
-                    <span>By: {{ page.author }}</span>
+                    <span>Por: {{ page.author }}</span>
                 </div>
                 <!-- Tags -->
                 <div>
@@ -53,7 +57,7 @@ layout: wrapper
 
             <!-- Share Buttons -->
             <div class="mb-5">
-                <h5 class="mb-3">Share this post</h5>
+                <h5 class="mb-3">Compartir este artículo</h5>
                 <button class="btn btn-dark me-2" id="shareToX">
                     <i class="bi bi-twitter-x"></i> X
                 </button>
@@ -61,7 +65,7 @@ layout: wrapper
                     <i class="bi bi-linkedin"></i> LinkedIn
                 </button>
                 <button class="btn btn-secondary" id="copyLink">
-                    <i class="bi bi-link-45deg"></i> Copy Link
+                    <i class="bi bi-link-45deg"></i> Copiar enlace
                 </button>
             </div>
 
@@ -92,7 +96,7 @@ layout: wrapper
             
             {% if matching_posts.size > 0 %}
             <div>
-                <h3 id="related-posts" class="mb-4">Related Posts</h3>
+                <h3 id="related-posts" class="mb-4">Artículos relacionados</h3>
                 <div class="row row-cols-1 row-cols-md-2 g-4">
                     {% for post in matching_posts limit:2 %}
                     <div class="col">
@@ -105,7 +109,7 @@ layout: wrapper
                                 {{ post.excerpt | strip_html | truncatewords: 25 }}
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="small">{{ post.duration }}</span>
-                                    <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Leer más</a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +124,7 @@ layout: wrapper
         <div class="col-lg-4" id="sidebar-container">
             <div class="card sticky-top" style="top: 2rem;">
                 <div class="card-body">
-                    <h5 class="card-title">In This Article</h5>
+                    <h5 class="card-title">En este artículo</h5>
                     <nav class="nav flex-column" id="table-of-contents">
                         <!-- JS will populate this -->
                     </nav>
@@ -206,7 +210,7 @@ layout: wrapper
             try {
                 await navigator.clipboard.writeText(pageUrl);
                 const originalText = copyLink.innerHTML;
-                copyLink.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+                copyLink.innerHTML = '<i class="bi bi-check-lg"></i> Copiado';
                 setTimeout(() => {
                     copyLink.innerHTML = originalText;
                 }, 2000);

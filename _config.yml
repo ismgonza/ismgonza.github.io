@@ -1,9 +1,10 @@
 title: GonRod
-title_description: Tech Guides & Solutions | Making Tech Less Complicated
+lang: es
+title_description: IA, nube y seguridad | Tecnología clara para pymes
 meta_description: >-
-  Your trusted resource for in-depth tech guides, troubleshooting solutions, and expert insights. From coding challenges to system optimization, we deliver practical knowledge to help you master modern technology.
+  Inteligencia artificial, nube y seguridad en un lenguaje fácil, para emprendedores y pymes de Latinoamérica.
 rss_description: >-
-  Expert-driven tech blog featuring comprehensive guides, troubleshooting walkthroughs, and industry insights. We break down complex technical challenges into clear, actionable solutions for developers, IT professionals, and tech enthusiasts.
+  Ideas de inteligencia artificial, nube y seguridad explicadas en sencillo para emprendedores y pymes de Latinoamérica.
 
 url: "https://www.gonrod.com"
 baseurl: "" # the subpath of your site, e.g. /blog
