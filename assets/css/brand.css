@@ -1,0 +1,33 @@
+/* Marca: colores, letra y tarjetas (se carga después de Bootstrap) */
+:root{--bg0:#10192A;--bg1:#0A0E18;--yel:#FDD408;--red:#EF4444;--green:#10B981;--purple:#A78BFA;--soft:#C8CCD8;--line:#E5E8EC;--muted:#5A6470}
+body{font-family:'Poppins',system-ui,sans-serif;background:#F7F8FA}
+.navbar-brand{font-weight:700}.navbar-brand .acc{color:var(--yel)}
+header .navbar,.footer{background:var(--bg1)!important}
+.footer a{color:var(--yel)}
+
+/* Tarjetas de posts */
+.section-title{font-weight:700;margin-bottom:1.5rem}
+.post-card{display:block;height:100%;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;color:inherit;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.post-card:hover{color:inherit;transform:translateY(-4px);box-shadow:0 12px 28px rgba(16,25,42,.12)}
+.post-card img,.post-card .no-img{width:100%;aspect-ratio:1200/630;object-fit:cover;display:block}
+.post-card .no-img{background:linear-gradient(115deg,var(--bg0),var(--bg1))}
+.post-card .cb{padding:18px 20px 20px}
+.post-card h3{font-size:1.05rem;font-weight:600;line-height:1.35;margin:10px 0 8px}
+.post-card p{color:var(--muted);font-size:.92rem;margin:0 0 12px}
+.post-card small{color:var(--muted)}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:99px;color:#fff;background:var(--muted)}
+.tag.security{background:var(--red)}.tag.cloud{background:var(--green)}.tag.ai{background:var(--purple)}
+
+/* Footer con contacto */
+.footer-title{color:#fff;font-weight:600;font-size:1.1rem;margin-bottom:14px}
+.footer-social{display:flex;justify-content:center;gap:14px;margin-bottom:18px}
+.footer-social a{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+.footer-social a:hover{color:#14131A;background:var(--yel);border-color:var(--yel);transform:translateY(-2px)}
+.footer-copy{color:var(--soft);font-size:.85rem;margin:0}.footer-copy .acc{color:var(--yel)}
+
+/* Footer con contacto */
+.footer-title{color:#fff;font-weight:600;font-size:1.1rem;margin-bottom:14px}
+.footer-social{display:flex;justify-content:center;gap:14px;margin-bottom:18px}
+.footer-social a{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+.footer-social a:hover{color:#14131A;background:var(--yel);border-color:var(--yel);transform:translateY(-2px)}
+.footer-copy{color:var(--soft);font-size:.85rem;margin:0}.footer-copy .acc{color:var(--yel)}

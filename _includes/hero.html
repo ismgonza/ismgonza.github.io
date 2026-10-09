@@ -1,57 +1,29 @@
-    <div class="hero-section position-relative">
-        <!-- SVG Divider -->
-        <div class="hero-divider">
-            <!-- Copy the entire SVG code here -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <linearGradient id="gradient1" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#1e2a4a;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#2a3f7d;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="gradient2" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#2a3f7d;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#3a5cb0;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <path d="M0 0 H1440 V800 H0 Z" fill="url(#gradient1)"/>
-                <path d="M0 800 
-                         C360 600, 240 520, 576 480
-                         S1080 360, 1224 200
-                         S1368 80, 1440 0
-                         L1440 0 L1440 800 L0 800 Z" 
-                      fill="url(#gradient2)"/>
-            </svg>
-        </div>
+<div class="hero-section">
+    <div class="hero-bg"><canvas id="hero-canvas" data-mode="scan" data-color="253,212,8"></canvas></div>
 
-        <!-- Animated Background with Geometric Shapes -->
-        <div class="hero-bg">
-            <!-- Animated shapes -->
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
-            <div class="shape shape-6"></div>
-            <!-- Additional shapes -->
-            <div class="circle-1"></div>
-            <div class="circle-2"></div>
-            <div class="triangle-1"></div>
-            <div class="triangle-2"></div>
-        </div>
-
-    <!-- Your existing navigation code goes here -->
     {% include header.html %}
 
-    <!-- Hero Content -->
     <div class="container hero-content">
-        <div class="row">
-            <div class="col-lg-7 text-white">
-                <h1 class="display-4 fw-bold mb-4">Tecnología clara para tu negocio</h1>
-                <p class="lead mb-4 pe-lg-5">Comparto inteligencia artificial, nube y seguridad en un lenguaje fácil, para emprendedores y pymes de Latinoamérica.</p>
-                <div class="d-flex gap-3">
-                    <a href="/contact" class="btn btn-light btn-lg px-4">Contáctame</a>
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="me-mobile">
+                    <img src="{{ '/assets/images/isma.jpg' | relative_url }}" alt="Isma González">
+                    <div><b>Isma González</b><a href="https://www.instagram.com/ismagonrod/">@ismagonrod</a></div>
                 </div>
+                <span class="kicker"><i></i>Seguridad · IA · Nube</span>
+                <h1><mark>Pruebo</mark> la tecnología para que vos no tengás que hacerlo</h1>
+                <p class="lead">IA, seguridad y nube: te cuento qué significa cada prueba para tu negocio.</p>
+                <div class="hero-btns">
+                    <a href="https://www.instagram.com/ismagonrod/" class="btn btn-brand" target="_blank" rel="noopener"><i class="bi bi-instagram me-2"></i>Seguime en Instagram</a>
+                </div>
+            </div>
+            <div class="me">
+                <div class="me-photo"><img src="{{ '/assets/images/isma.jpg' | relative_url }}" alt="Isma González"></div>
+                <b>Isma González</b>
+                <a href="https://www.instagram.com/ismagonrod/" target="_blank" rel="noopener">@ismagonrod</a>
             </div>
         </div>
     </div>
+    <div class="hero-line"></div>
 </div>
+<script src="{{ '/assets/js/hero.js' | relative_url }}" defer></script>

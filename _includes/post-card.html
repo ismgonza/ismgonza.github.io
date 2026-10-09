@@ -1,0 +1,16 @@
+{%- assign cat = include.post.categories | first -%}
+{%- case cat -%}
+  {%- when 'security' -%}{%- assign label = 'Seguridad' -%}
+  {%- when 'cloud' -%}{%- assign label = 'Nube' -%}
+  {%- when 'ai' -%}{%- assign label = 'IA' -%}
+  {%- else -%}{%- assign label = '' -%}
+{%- endcase -%}
+<a href="{{ include.post.url | relative_url }}" class="post-card">
+    {% if include.post.banner_image %}<img src="{{ include.post.banner_image | relative_url }}" alt="{{ include.post.title }}" loading="lazy">{% else %}<div class="no-img"></div>{% endif %}
+    <div class="cb">
+        {% if label != '' %}<span class="tag {{ cat }}">{{ label }}</span>{% endif %}
+        <h3>{{ include.post.title }}</h3>
+        <p>{{ include.post.description | default: include.post.excerpt | strip_html | truncatewords: 25 }}</p>
+        <small>{% include date-es.html date=include.post.date %}{% if include.post.duration %} · {{ include.post.duration }}{% endif %}</small>
+    </div>
+</a>

@@ -1,0 +1,10 @@
+<div class="pd-checklist">
+{%- for s in page.checklist %}
+<details class="pd-acc"><summary><span class="pd-title">{{ forloop.index }}. {{ s.title }}</span><span class="pd-count"></span></summary>
+<ul class="pd-list">
+{%- for i in s.items %}
+<li><label><input type="checkbox"><span>{{ i.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}{% if i.ref %}<span class="pd-ref">{{ i.ref }}</span>{% endif %}</span></label></li>
+{%- endfor %}
+</ul></details>
+{%- endfor %}
+</div>
